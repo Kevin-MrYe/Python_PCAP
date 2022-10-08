@@ -45,6 +45,39 @@ result = fun(dat)
 alias.method()
 ```
 
+## Modules
+**1. dir()**
+
+- dir() returns an alphabetically sorted list containing all entities' names available in the module.
+- if the module's name has been aliased, you must use the alias, not the original name. 
+
+**2. Math**
+
+The math module couples more than 50 symbols (functions and constants) that perform mathematical operations (like sine(), pow(), factorial()) or providing important values (like π and the Euler symbol e).
+
+**3. Random**
+
+The random module groups more than 60 entities designed to help you use pseudo-random numbers. Don't forget the prefix "pseudo", as there is no such thing as a real random number when it comes to generating them using the computer's algorithms.
+
+**4. Platform**
+
+The platform module contains about 70 functions which let you dive into the underlaying layers of the OS and hardware. Using them allows you to get to know more about the environment in which your code is executed.( i.e., hardware, operating system, and interpreter version information.)
+
+- platform() is a function that can show you all the underlying layers in one glance.
+- machine()  tells the generic name of the processor which runs your OS together with Python and your code.
+- processor() function returns a string filled with the real processor name (if possible). 
+- system() returns the generic OS name as a string.
+- version() returns the OS version is provided as a string.
+- python_implementation() returns a string denoting the Python implementation.
+- python_version_tuple() returns a three-element tuple filled with:
+    - the major part of Python's version;
+    - the minor part;
+    - the patch level number.
+
+
+
+## Packages
+
 
 
 

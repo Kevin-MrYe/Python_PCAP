@@ -151,6 +151,35 @@ During the very first import of the actual module, Python translates its source 
 
 Python is able to check if the module's source file has been modified (in this case, the pyc file will be rebuilt) or not (when the pyc file may be run at once). 
 
+## Package Installer
 
+**1. PyPI(Python Package Index)**
+
+[PyPI](https://pypi.org/) is a centralized repository of all available software packages. The PyPI repo is sometimes referred to as the Cheese Shop.
+
+**2. pip(Pip install packages)**
+
+Pip is is an example of a recursive acronym, which means that the acronym refers to itself, which means that explaining it is an infinite process.
+
+**Note:**
+
+- As pip may not be deployed as a part of standard Python installation, it is possible that you will need to install it manually. 
+- Pip is a console tool.
+
+**3. Dependencies**
+
+Dependency is a phenomenon that appears every time you're going to use a piece of software that relies on other software. 
+
+**4. pip command**
+
+- pip --version or pip3 version - check pip version
+- pip help operation - shows brief pip's description;
+- pip list - shows list of currently installed packages;
+- pip show package_name     - shows package_name info including package's dependencies;
+- pip search anystring - searches through PyPI directories in order to find packages which name contains anystring;
+- pip install name - installs name system-wide (expect problems when you don't have administrative rights);
+- pip install --user name - install name for you only; no other your platform's user will be able to use it;
+- pip install -U name - updates previously installed package;
+- pip uninstall name - uninstalls previously installed package;
 
 

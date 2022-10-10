@@ -145,6 +145,11 @@ print(module.suml(zeroes))
 print(module.prodl(ones))
 ```
 
+**3. \_\_pycache\_\_**
+
+During the very first import of the actual module, Python translates its source code into the semi-compiled format stored inside the pyc files, and deploys these files into the \_\_pycache\_\_ directory located in the module's home directory.
+
+Python is able to check if the module's source file has been modified (in this case, the pyc file will be rebuilt) or not (when the pyc file may be run at once). 
 
 
 

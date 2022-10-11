@@ -41,6 +41,53 @@ one_value = short_list[0.5] # TypeError
 short_list = [1]
 short_list.append(2)
 short_list.depend(3) # AttributeError
+
+# KeyboardInterrupt
+# A concrete exception raised when the user uses Ctrl-C terminate a program's execution
+from time import sleep
+
+seconds = 0
+
+while True:
+    try:
+        print(seconds)
+        seconds += 1
+        sleep(1)
+    except KeyboardInterrupt:
+        print("Don't do that!")
+
+# ImportErroe
+# A concrete exception raised when an import operation fails
+try:
+    import math
+    import time
+    import abracadabra
+
+except:
+    print('One of your imports has failed.')
+
+# MemoryError 
+# a concrete exception raised when an operation cannot be completed due to a lack of free memory.
+string = 'x'
+try:
+    while True:
+        string = string + string
+        print(len(string))
+except MemoryError:
+    print('This is not funny!')
+
+# OverflowError
+# A concrete exception raised when an operation produces a number too big to be successfully stored
+from math import exp
+ex = 1
+
+try:
+    while True:
+        print(exp(ex))
+        ex *= 2
+except OverflowError:
+    print('The number is too big.')
+
 ```
 ## Hierarchy of Exceptions
 <p align="left" width="100%">

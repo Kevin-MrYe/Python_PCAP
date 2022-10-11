@@ -21,6 +21,16 @@ print(1/0) #ZeroDivisionError
 # when a function receives an argument of a proper type, but its value is unacceptable.
 print(int('hello'))
 
+# IndexError
+#when you try to access a non-existent sequence's element
+list1 = [1]
+print(list1[1])
+
+# KeyError
+# Raised when access a collection's non-existent element (e.g., a dictionary's element)
+dict1 = {'name':'mike'}
+print(dict1['address'])
+
 # TypeError
 # Apply a data whose type cannot be accepted in the current context.
 short_list = [1]
@@ -32,7 +42,25 @@ short_list = [1]
 short_list.append(2)
 short_list.depend(3) # AttributeError
 ```
-## Hirerachy of Exceptions
+## Hierarchy of Exceptions
+<p align="left" width="100%">
+  <img src ="https://github.com/Kevin-MrYe/Python_PCAP/blob/master/Exceptions/imgs/hierachyofexception.png" width = '700px'>
+</p>
+
+The closer to the root an exception is located, the more general (abstract) it is.
+```python
+try:
+    y = 1 / 0
+except ArithmeticError:
+    print("Arithmetic problem!") #output: Arithmetic problem!
+except ZeroDivisionError:
+    print("Zero Division!")
+
+print("THE END.")
+```
+
+- Don't put more general exceptions before more concrete ones,this will make the latter one unreachable and useless
+
 
 
 ## try-except
@@ -67,7 +95,54 @@ The except keyword starts a piece of code which will be executed if anything ins
 
 ## Raise an exception
 
+The raise instruction raises the specified exception.
 
+```python
+def bad_fun(n):
+    raise ZeroDivisionError
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("What happened? An error?") #output:What happened? An error?
+
+print("THE END.")
+```
+The same statement, but lacking ExceptionName, can be used inside the try branch only, and raises the same exception which is currently being handled. Example as follows:
+```python
+def bad_fun(n):
+    try:
+        return n / 0
+    except:
+        print("I did it again!")
+        raise
+
+try:
+    bad_fun(0)
+except ArithmeticError:
+    print("I see!") 
+
+print("THE END.") 
+
+#output:
+# I did it again!
+# I see!
+# THE END.
+```
+
+## Assert Keyword
+The Python statement assert expression evaluates the expression and raises the AssertError exception when the expression is equal to False, zero, an empty string, or None.
+```python
+import math
+
+x = float(input("Enter a number: ")) # Enter -1
+assert x >= 0.0 #output: AssertionError
+
+x = math.sqrt(x)
+
+print(x)
+
+```
 
 
 

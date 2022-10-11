@@ -372,9 +372,36 @@ print("I know that I know nothing. Part 1.".title()) #output:I Know That I Know 
 print("I know that I know nothing. Part 2.".upper()) #output:I KNOW THAT I KNOW NOTHING. PART 2.
 ```
 
+## String Comparation
+String Comparation just compares code point values, character by character.
 
+The final relation between strings is determined by comparing the first different character in both strings.
 
+- String comparison is always case-sensitive (upper-case letters are taken as lesser than lower-case).
+```
+'beta' > 'Beta'
+```
 
+- Compare two strings of different lengths and the shorter one is identical to the longer one's beginning, the longer string is considered greater.
+
+```
+'alpha' < 'alphabet'
+```
+- Compare two strings contain digits only, it's still not a number.
+```
+'10' == '010' # False
+'10' > '010' #True
+'10' > '8' # False
+'20' < '8' #True
+'20' < '80' #True
+```
+
+- Compare strings to numbers gives no reasonable result, because no string can be equal to any number.
+```
+string == number is always False;
+string != number is always True;
+string >= number always raises an exception.
+```
 
 
 

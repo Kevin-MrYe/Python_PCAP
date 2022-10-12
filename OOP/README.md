@@ -190,6 +190,7 @@ print(Classy.__module__) #output: __main__
 obj = Classy()
 print(obj.__module__) #output: __main__
  ```
+- Any module named \_\_main\_\_ is actually not a module, but the file currently being run.
 
 **5. \_\_bases\_\_**
 

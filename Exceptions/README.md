@@ -191,6 +191,58 @@ print(x)
 
 ```
 
+## Try-except-else
+
+Else block is executed when (and only when) no exception has been raised inside the try block.
+```python
+def reciprocal(n):
+    try:
+        n = 1 / n
+    except ZeroDivisionError:
+        print("Division failed")
+        return None
+    else:
+        print("Everything went fine")
+        return n
+
+print(reciprocal(2)) 
+#output:  Everything went fine
+#         0.5
+print(reciprocal(0))
+# output: Division failed
+#         NOne
+```
+
+## Try-except-else-finally
+
+The finally block is always executed (it finalizes the try-except block execution, hence its name), no matter what happened earlier, even when raising an exception, no matter whether this has been handled or not.
+```python
+def reciprocal(n):
+    try:
+        n = 1 / n
+    except ZeroDivisionError:
+        print("Division failed")
+        n = None
+    else:
+        print("Everything went fine")
+    finally:
+        print("It's time to say goodbye")
+        return n
+
+print(reciprocal(2))
+#output: Everything went fine
+#        It's time to say goodbye
+#        0.5
+print(reciprocal(0))
+#output: Division failed
+#        It's time to say goodbye
+#        None
+
+```
+
+## Create Exception Class
+
+
 
 
 

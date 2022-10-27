@@ -417,6 +417,26 @@ print(string_1 == string_2, string_1 is string_2) #output: True False
 - Variables don't store the objects themselves, but only the handles pointing to the internal Python memory.
 
 **4. Inheriting methods**
+
+If omitting the construct in subclass, methods as well as instance and class variables defined in a superclass are automatically inherited by their subclasses.
+```python
+class Mouse:
+    Population = 0
+    def __init__(self, name):
+        Mouse.Population += 1
+        self.name = name
+
+    def __str__(self):
+        return "Hi, my name is " + self.name
+
+class LabMouse(Mouse):
+    pass
+
+professor_mouse = LabMouse("Professor Mouser")
+print(professor_mouse, Mouse.Population)  # Prints "Hi, my name is Professor Mouser 1"
+```
+
+However, if we want to rewrite the contructor, wee need to explicitly inherit contructor from super class.
 ```python
 # First way: superclass_name.__init__(self,args)
 class SuperClass:
@@ -460,6 +480,117 @@ print(obj) #output: My name is Andy.
 
 - The super() function creates a context in which you don't have to (moreover, you mustn't) pass the self argument to the method being invoked.
 - superclass_name.\_\_init\_\_(self,args) == super().\_\_init\_\_(args)
+
+**5. Multilevel and multiple inheritance**
+```python
+# Multilevel inheritance
+class Base:
+    pass
+
+class Derived1(Base):
+    pass
+
+class Derived2(Derived1):
+    pass
+```
+
+```python
+# Multiple inheritance
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class MultiDerived(Base1, Base2):
+    pass
+```
+
+**Note:**
+
+- Multiple inheritance occurs when a class has more than one superclass. 
+
+**6. Overriding vs Overloading**
+
+The entity defined later (in the inheritance sense) overrides the same entity defined earlier.
+```python
+# method overriding
+class Level1:
+    var = 100
+    def fun(self):
+        return 101
+
+
+class Level2(Level1):
+    var = 200
+    def fun(self):
+        return 201
+
+
+class Level3(Level2):
+    pass
+
+obj = Level3()
+print(obj.var, obj.fun())
+```
+
+Python does not support function overloading. When we define multiple functions with the same name, the later one always overrides the prior and thus, in the namespace, there will always be a single entry against each function name. In other word, we may overload the methods but can only use the latest defined method.
+```python
+# method overloading
+class Level1:
+    var = 100
+    def fun(self):
+        return 101
+
+
+class Level2(Level1):
+    var = 200
+    def fun(self):
+        return 201
+        
+    def fun(self,num):
+        return num
+
+
+class Level3(Level2):
+    pass
+
+obj = Level3()
+print(obj.var, obj.fun())
+print(obj.var, obj.fun(10))
+#output: TypeError: fun() missing 1 required positional argument: 'num'
+```
+
+**7. Components resolution order**
+
+Python looks for object components in the following order:
+- inside the object itself;
+- in its superclasses, from bottom to top;
+- if there is more than one class on a particular inheritance path, Python scans them from left to right.
+```python
+class Left:
+    var = "L"
+    var_left = "LL"
+    def fun(self):
+        return "Left"
+
+class Right:
+    var = "R"
+    var_right = "RR"
+    def fun(self):
+        return "Right"
+
+
+class Sub(Left, Right):
+    pass
+
+obj = Sub()
+print(obj.var, obj.var_left, obj.var_right, obj.fun())
+# output: L LL RR Left
+```
+
+**8. Resolution Method Order**
+
 ## Magic methods
 
 

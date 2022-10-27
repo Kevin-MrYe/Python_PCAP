@@ -326,4 +326,140 @@ class AddingStack(Stack):
 - Omitting this point will have harmful effects - the object will be deprived of the __stack_list list.
 - it's generally a recommended practice to invoke the superclass's constructor before any other initializations you want to perform inside the subclass.
 
+## Inheritance
+
+Inheritance is a common practice (in object programming) of passing attributes and methods from the superclass (defined and existing) to a newly created class, called the subclass.
+
+**1. issubclass()**
+
+issubclass() can check if a particular class is a subclass of any other class.
+
+```python
+class Vehicle:
+    pass
+
+class LandVehicle(Vehicle):
+    pass
+
+class TrackedVehicle(LandVehicle):
+    pass
+
+for cls1 in [Vehicle, LandVehicle, TrackedVehicle]:
+    for cls2 in [Vehicle, LandVehicle, TrackedVehicle]:
+        print(issubclass(cls1, cls2), end="\t")
+    print()
+#output: True False False
+#        True True  False
+#        True True  True
+```
+
+**Note:**
+
+- Each class is considered to be a subclass of itself.
+
+**2. isinstance()**
+
+isinstance() can check whether it is an object of a certain class or not.
+```python
+class Vehicle:
+    pass
+
+class LandVehicle(Vehicle):
+    pass
+
+class TrackedVehicle(LandVehicle):
+    pass
+
+my_vehicle = Vehicle()
+my_land_vehicle = LandVehicle()
+my_tracked_vehicle = TrackedVehicle()
+
+for obj in [my_vehicle, my_land_vehicle, my_tracked_vehicle]:
+    for cls in [Vehicle, LandVehicle, TrackedVehicle]:
+        print(isinstance(obj, cls), end="\t")
+    print()
+#output: True False Fasle
+#        True True  True
+#        True True  True
+```
+
+**Note:**
+
+- Being an instance of a class means that the object (the cake) has been prepared using a recipe contained in either the class or one of its superclasses.
+
+**3. is operator**
+
+The is operator checks whether two variables (object_one and object_two here) refer to the same object.
+```python
+class SampleClass:
+    def __init__(self, val):
+        self.val = val
+
+object_1 = SampleClass(0)
+object_2 = SampleClass(2)
+object_3 = object_1
+object_3.val += 1
+
+print(object_1 is object_2) #output: False
+print(object_2 is object_3) #output: False
+print(object_3 is object_1) #output: True
+print(object_1.val, object_2.val, object_3.val) #output: 1 2 1
+
+string_1 = "Mary had a little "
+string_2 = "Mary had a little lamb"
+string_1 += "lamb"
+
+print(string_1 == string_2, string_1 is string_2) #output: True False
+```
+
+**Note:**
+
+- Variables don't store the objects themselves, but only the handles pointing to the internal Python memory.
+
+**4. Inheriting methods**
+```python
+# First way: superclass_name.__init__(self,args)
+class SuperClass:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return "My name is " + self.name + "."
+
+
+class Sub(SuperClass):
+    def __init__(self, name):
+        SuperClass.__init__(self, name)
+    
+obj = Sub("Andy")
+print(obj) #output: My name is Andy.
+```
+
+**Note:**
+
+- The Sub class defines its own constructor, which invokes the one from the superclass. It explicitly named the superclass, and pointed to the method to invoke __init__(), providing all needed arguments.
+
+```python
+class Super:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return "My name is " + self.name + "."
+
+
+class Sub(Super):
+    def __init__(self, name):
+        super().__init__(name)
+
+obj = Sub("Andy")
+print(obj) #output: My name is Andy.
+```
+
+**Note:**
+
+- The super() function creates a context in which you don't have to (moreover, you mustn't) pass the self argument to the method being invoked.
+- superclass_name.\_\_init\_\_(self,args) == super().\_\_init\_\_(args)
+## Magic methods
+
 

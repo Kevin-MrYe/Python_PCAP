@@ -99,3 +99,12 @@ A conditional expression is an expression built using the if-else operator. For 
 ```python
 print(True if 0 >=0 else False) #output: True
 ```
+
+## Processing files
+
+**1. File names**
+
+Different operating systems can treat the files in different ways. For example, Windows uses a different naming convention than the one adopted in Unix/Linux systems.
+
+
+**2. **
